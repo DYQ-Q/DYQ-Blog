@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>个人展示 | DYQ</title>
+    <title>个人展示 | 毛润博</title>
     <style>
         * {
             margin: 0;
@@ -13,65 +13,141 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
+            line-height: 1.8;
             color: #333;
             background: #f5f7fa;
-        }
-
-        /* 导航栏 */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            padding: 1rem 0;
-        }
-
-        nav ul {
-            list-style: none;
             display: flex;
-            justify-content: center;
-            gap: 2rem;
         }
 
-        nav a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
+        /* 侧边栏 */
+        .sidebar {
+            width: 280px;
+            background: #2c3e50;
+            color: white;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            padding: 2rem 0;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+
+        .sidebar-header {
+            text-align: center;
+            padding: 0 1.5rem 2rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .sidebar-header h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-photo {
+            margin-bottom: 1rem;
+        }
+
+        .circular-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #3498db;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .sidebar-nav {
+            margin-top: 2rem;
+        }
+
+        .nav-item {
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-left: 4px solid transparent;
+        }
+
+        .nav-item:hover {
+            background: rgba(255,255,255,0.1);
+            border-left-color: #3498db;
+        }
+
+        .nav-item.active {
+            background: rgba(255,255,255,0.15);
+            border-left-color: #3498db;
+        }
+
+        .nav-item-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .sub-nav {
+            display: none;
+            padding-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .sub-nav-item {
+            padding: 0.5rem 0;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.8);
+            cursor: pointer;
             transition: color 0.3s;
         }
 
-        nav a:hover {
-            color: #4a90e2;
+        .sub-nav-item:hover {
+            color: #3498db;
         }
 
-        /* 主容器 */
-        .container {
+        .sub-nav-item.active {
+            color: #3498db;
+        }
+
+        /* 主内容区 */
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+            padding: 3rem;
             max-width: 1200px;
-            margin: 0 auto;
-            padding: 80px 20px 40px;
         }
 
-        /* 个人信息部分 */
-        .profile {
+        /* 页面切换 */
+        .page {
+            display: none;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 个人信息卡片 */
+        .info-card {
             background: white;
             border-radius: 12px;
             padding: 2rem;
             margin-bottom: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
-        .profile h1 {
-            color: #2c3e50;
-            margin-bottom: 1rem;
-        }
-
-        .profile-info {
+        .info-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
             margin-top: 1.5rem;
         }
 
@@ -79,384 +155,370 @@
             padding: 1rem;
             background: #f8f9fa;
             border-radius: 8px;
+            border-left: 4px solid #3498db;
         }
 
         .info-label {
             font-weight: 600;
-            color: #4a90e2;
+            color: #2c3e50;
             margin-bottom: 0.5rem;
+            font-size: 0.9rem;
         }
 
-        /* 项目展示部分 */
-        .projects {
-            margin-top: 3rem;
+        .info-value {
+            color: #555;
+        }
+
+        /* 个人陈述部分 */
+        .statement-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
         .section-title {
-            text-align: center;
-            margin-bottom: 2rem;
             color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #3498db;
         }
 
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
+        .subsection-title {
+            color: #34495e;
+            font-size: 1.3rem;
+            margin: 2rem 0 1rem;
+            padding-left: 1rem;
+            border-left: 4px solid #3498db;
         }
 
-        .project-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
+        .subsection-subtitle {
+            color: #555;
+            font-size: 1.1rem;
+            margin: 1.5rem 0 0.8rem;
+            font-weight: 600;
         }
 
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        .content-text {
+            color: #666;
+            line-height: 1.8;
+            text-align: justify;
         }
 
-        .project-images {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 0.5rem;
-            padding: 1rem;
+        .achievement-item {
             background: #f8f9fa;
-        }
-
-        .project-images img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-
-        .project-images img:hover {
-            transform: scale(1.05);
-        }
-
-        .project-info {
             padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
         }
 
-        .project-info h3 {
+        .achievement-title {
+            font-weight: 600;
             color: #2c3e50;
             margin-bottom: 0.5rem;
-        }
-
-        .project-info p {
-            color: #666;
-            font-size: 0.95rem;
-        }
-
-        .video-container {
-            margin-top: 1rem;
-            padding: 1rem;
-            background: #f8f9fa;
-            border-radius: 8px;
-        }
-
-        .video-container video {
-            width: 100%;
-            border-radius: 8px;
-        }
-
-        /* 图片模态框 */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-        }
-
-        .modal-content {
-            margin: auto;
-            display: block;
-            max-width: 90%;
-            max-height: 90%;
-            margin-top: 5%;
-            border-radius: 8px;
-        }
-
-        .close {
-            position: absolute;
-            top: 15px;
-            right: 35px;
-            color: #f1f1f1;
-            font-size: 40px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        /* 页脚 */
-        footer {
-            text-align: center;
-            padding: 2rem;
-            background: #2c3e50;
-            color: white;
-            margin-top: 3rem;
         }
 
         /* 响应式设计 */
         @media (max-width: 768px) {
-            .project-grid {
-                grid-template-columns: 1fr;
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
             }
 
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
+            .main-content {
+                margin-left: 0;
+                padding: 1.5rem;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="#profile">个人信息</a></li>
-            <li><a href="#3dprinting">3D打印</a></li>
-            <li><a href="#mcu">单片机课设</a></li>
-            <li><a href="#competitions">竞赛项目</a></li>
-            <li><a href="#equipment">智能装备</a></li>
-        </ul>
-    </nav>
-
-    <div class="container">
-        <!-- 个人信息部分 -->
-        <section id="profile" class="profile">
-            <h1>个人简介</h1>
-            <div class="profile-info">
-                <div class="info-item">
-                    <div class="info-label">学校</div>
-                    <div>天津理工大学</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">专业</div>
-                    <div>机器人工程</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">年级</div>
-                    <div>2027届</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">年龄</div>
-                    <div>20岁</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">出生日期</div>
-                    <div>2006.04.04</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">籍贯</div>
-                    <div>河南省汝州市</div>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="profile-photo">
+                <img src="media/蓝底证件照.jpg" alt="证件照" class="circular-photo">
+            </div>
+            <h1>毛润博</h1>
+            <p>个人展示博客</p>
+        </div>
+        <div class="sidebar-nav">
+            <div class="nav-item active" data-page="profile">
+                <div class="nav-item-title">个人简介</div>
+            </div>
+            <div class="nav-item" data-page="competitions">
+                <div class="nav-item-title">竞赛科创经历</div>
+                <div class="sub-nav">
+                    <div class="sub-nav-item" data-subpage="3dprinting">3D打印</div>
+                    <div class="sub-nav-item" data-subpage="mcu">单片机课设</div>
+                    <div class="sub-nav-item" data-subpage="engineering">工创赛</div>
+                    <div class="sub-nav-item" data-subpage="mechanical">机创赛</div>
+                    <div class="sub-nav-item" data-subpage="gripper">机械夹爪</div>
+                    <div class="sub-nav-item" data-subpage="equipment">智能装备</div>
+                    <div class="sub-nav-item" data-subpage="zhuque">朱雀3D打印机</div>
+                    <div class="sub-nav-item" data-subpage="robot">机器人及人工智能大赛</div>
+                    <div class="sub-nav-item" data-subpage="science">科普活动</div>
                 </div>
             </div>
-        </section>
-
-        <!-- 项目展示部分 -->
-        <section class="projects">
-            <h2 class="section-title">项目经历</h2>
-
-            <!-- 3D打印项目 -->
-            <div id="3dprinting" class="project-card">
-                <div class="project-info">
-                    <h3>3D打印项目</h3>
-                    <p>使用3D打印技术制作多种实用物品和模型，包括收纳柜、手机支架和高达模型等。</p>
-                </div>
-                <div class="project-images">
-                    <img src="media/3D打印可拓展收纳柜.jpg" alt="3D打印可拓展收纳柜">
-                    <img src="media/3D打印手机支架.jpg" alt="3D打印手机支架">
-                    <img src="media/3D打印高达.jpg" alt="3D打印高达">
-                </div>
-            </div>
-
-            <!-- 单片机课设 -->
-            <div id="mcu" class="project-card">
-                <div class="project-info">
-                    <h3>单片机课程设计</h3>
-                    <p>完成基于单片机的系统设计，包括PCB设计、电路搭建和功能实现。</p>
-                </div>
-                <div class="project-images">
-                    <img src="media/单片机课设-PCB测试.jpg" alt="PCB测试">
-                    <img src="media/单片机课设-成品内部结构展示.jpg" alt="成品内部结构">
-                    <img src="media/单片机课设-成品展示.jpg" alt="成品展示">
-                    <img src="media/单片机课设-电路搭建.jpg" alt="电路搭建">
-                </div>
-                <div class="video-container">
-                    <video controls>
-                        <source src="media/单片机课设-功能演示.mp4" type="video/mp4">
-                        您的浏览器不支持视频播放。
-                    </video>
-                </div>
-            </div>
-
-            <!-- 工创赛 -->
-            <div id="competitions" class="project-card">
-                <div class="project-info">
-                    <h3>全国大学生工程实践与创新能力大赛</h3>
-                    <p>参与工创赛项目，设计并制作智能小车，实现视觉识别等功能。</p>
-                </div>
-                <div class="project-images">
-                    <img src="media/工创赛-合照.jpg" alt="团队合照">
-                    <img src="media/工创赛-小车电路结构.jpg" alt="小车电路结构">
-                    <img src="media/工创赛-小车视觉识别.jpg" alt="视觉识别系统">
-                    <img src="media/工创赛-整车展示.jpg" alt="整车展示">
-                </div>
-            </div>
-
-            <!-- 机创赛 -->
-            <div class="project-card">
-                <div class="project-info">
-                    <h3>全国大学生机械设计创新能力大赛</h3>
-                    <p>设计创新机械结构，实现蝴蝶机构的运动控制。</p>
-                </div>
-                <div class="project-images">
-                    <img src="media/机创-蝴蝶结构展示.jpg" alt="蝴蝶结构展示">
-                </div>
-                <div class="video-container">
-                    <video controls>
-                        <source src="media/机创-蝴蝶运动展示.mp4" type="video/mp4">
-                        您的浏览器不支持视频播放。
-                    </video>
-                </div>
-            </div>
-
-            <!-- 机械夹爪 -->
-            <div class="project-card">
-                <div class="project-info">
-                    <h3>机械夹爪设计</h3>
-                    <p>设计并制作精密机械夹爪，实现稳定抓取功能。</p>
-                </div>
-                <div class="project-images">
-                    <img src="media/机械夹爪-传动展示.jpg" alt="传动结构">
-                    <img src="media/机械夹爪-抓取展示.jpg" alt="抓取演示">
-                </div>
-                <div class="video-container">
-                    <video controls>
-                        <source src="media/机械夹爪-夹取展示.mp4" type="video/mp4">
-                        您的浏览器不支持视频播放。
-                    </video>
-                </div>
-            </div>
-
-            <!-- 智能装备设计大赛 -->
-            <div id="equipment" class="project-card">
-                <div class="project-info">
-                    <h3>智能装备设计大赛</h3>
-                    <p>参与智能装备设计大赛，展示创新设计能力。</p>
-                </div>
-                <div class="project-images">
-                    <img src="media/智能装备大赛-展品1.jpg" alt="展品1">
-                    <img src="media/智能装备大赛-展品2.jpg" alt="展品2">
-                    <img src="media/智能装备大赛-展品3.jpg" alt="展品3">
-                    <img src="media/智能装备大赛-展品4.jpg" alt="展品4">
-                    <img src="media/智能装备大赛-获奖奖牌.jpg" alt="获奖奖牌">
-                </div>
-            </div>
-
-            <!-- 朱雀3D打印机 -->
-            <div class="project-card">
-                <div class="project-info">
-                    <h3>朱雀3D打印机组装</h3>
-                    <p>从零开始组装朱雀3D打印机，完成调试并成功打印。</p>
-                </div>
-                <div class="project-images">
-                    <img src="media/朱雀-整机展示.jpg" alt="整机展示">
-                    <img src="media/朱雀-零部件组装阶段一.jpg" alt="组装阶段一">
-                    <img src="media/朱雀-零部件组装阶段二.jpg" alt="组装阶段二">
-                    <img src="media/朱雀-零部件组装阶段三3.jpg" alt="组装阶段三">
-                    <img src="media/朱雀-首层打印测试.jpg" alt="首层打印测试">
-                    <img src="media/朱雀-打印层纹问题.jpg" alt="打印层纹问题">
-                </div>
-                <div class="video-container">
-                    <video controls>
-                        <source src="media/朱雀-打印展示.mp4" type="video/mp4">
-                        您的浏览器不支持视频播放。
-                    </video>
-                </div>
-            </div>
-
-            <!-- 机器人及人工智能大赛 -->
-            <div class="project-card">
-                <div class="project-info">
-                    <h3>机器人及人工智能大赛</h3>
-                    <p>参与机器人竞赛，展示机器人设计与编程能力。</p>
-                </div>
-                <div class="project-images">
-                    <img src="media/机器人及人工智能大赛-合照.jpg" alt="团队合照">
-                    <img src="media/机器人及人工智能大赛-搭建比赛场地.jpg" alt="搭建比赛场地">
-                </div>
-            </div>
-
-            <!-- 科普活动 -->
-            <div class="project-card">
-                <div class="project-info">
-                    <h3>科普活动</h3>
-                    <p>参与科普活动，传播科技知识，展示实践成果。</p>
-                </div>
-                <div class="project-images">
-                    <img src="media/科普活动.jpg" alt="科普活动">
-                </div>
-            </div>
-        </section>
+        </div>
     </div>
 
-    <!-- 图片模态框 -->
-    <div id="imageModal" class="modal">
-        <span class="close">&times;</span>
-        <img class="modal-content" id="modalImage">
-    </div>
+    <div class="main-content">
+        <!-- 个人简介页面 -->
+        <div class="page active" id="profile">
+            <div class="info-card">
+                <h2 class="section-title">基本信息</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-label">学校</div>
+                        <div class="info-value">天津理工大学</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">专业</div>
+                        <div class="info-value">机器人工程</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">加权成绩</div>
+                        <div class="info-value">91.77</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">专业排名</div>
+                        <div class="info-value">7/71</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">年级</div>
+                        <div class="info-value">2027届</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">年龄</div>
+                        <div class="info-value">20岁</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">出生日期</div>
+                        <div class="info-value">2006.04.04</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">籍贯</div>
+                        <div class="info-value">河南省汝州市</div>
+                    </div>
+                </div>
+            </div>
 
-    <footer>
-        <p>&copy; 2024 DYQ 个人展示博客</p>
-    </footer>
+            <div class="statement-section">
+                <h2 class="section-title">个人陈述</h2>
+
+                <h3 class="subsection-title">一、学术背景——书山有路勤为径</h3>
+
+                <h4 class="subsection-subtitle">1. 数理基础扎实，具备良好的分析能力。</h4>
+                <p class="content-text">
+                    我有着良好的数理功底，在高等数学、概率论与数理统计等课程中均取得优异成绩。通过自学，熟练掌握MATLAB、Python等编程工具，能够灵活运用于科研项目中的算法实现与数据分析。
+                </p>
+
+                <h4 class="subsection-subtitle">2. 坚持英语学习，具备良好的文献阅读能力。</h4>
+                <p class="content-text">
+                    已通过大学英语四级、六级考试，养成了每日阅读英文文献和科技文章的习惯，能够较为顺畅地阅读本领域国际前沿研究，为后续开展高水平科研工作做好准备。
+                </p>
+
+                <h3 class="subsection-title">二、科研与竞赛经历——学海无涯苦作舟</h3>
+                <p class="content-text">
+                    本科期间，我积极参与学科竞赛与科研实践，在机器人、智能制造、数学建模等领域不断锤炼自己的工程实践能力和创新思维，取得了以下成果：
+                </p>
+
+                <div class="achievement-item">
+                    <div class="achievement-title">第二十七届中国机器人及人工智能大赛全国总决赛二等奖</div>
+                    <p class="content-text">该赛事已列入全国普通高等学校学科竞赛排行榜。在机器人任务挑战赛中，我与团队协作完成了智能控制算法的设计与实现，锻炼了机器人系统的集成开发能力。</p>
+                </div>
+
+                <div class="achievement-item">
+                    <div class="achievement-title">2025年全国大学生数学建模竞赛天津赛区一等奖</div>
+                    <p class="content-text">在团队协作中，我负责算法建模与编程实现，锻炼了将实际问题转化为数学模型的抽象思维能力。</p>
+                </div>
+
+                <div class="achievement-item">
+                    <div class="achievement-title">2025 Asia and Pacific Mathematical Contest in Modeling（亚太杯）二等奖</div>
+                    <p class="content-text">该赛事评审流程严格，历经初评、网评、会评和复审四个阶段，进一步提升了我的英文建模与学术写作能力。</p>
+                </div>
+
+                <h3 class="subsection-title">三、志愿服务——奉献中践行责任</h3>
+                <p class="content-text">
+                    本科期间，我始终热心于公益与志愿服务，累计志愿时长超过70小时，其中最具意义的一次经历是2024年6月20日至23日，我担任"2024亚太机器人世界杯天津国际邀请赛"的志愿者。该赛事汇聚了来自亚太地区多国的机器人领域高校和科研团队，是一场高水平的国际性机器人竞赛。
+                </p>
+            </div>
+        </div>
+
+        <!-- 竞赛科创经历页面 -->
+        <div class="page" id="competitions">
+            <h2 class="section-title">竞赛科创经历</h2>
+            <div id="project-content"></div>
+        </div>
+    </div>
 
     <script>
-        // 图片模态框功能
-        const modal = document.getElementById('imageModal');
-        const modalImg = document.getElementById('modalImage');
-        const closeBtn = document.getElementsByClassName('close')[0];
+        // 页面切换功能
+        const navItems = document.querySelectorAll('.nav-item');
+        const pages = document.querySelectorAll('.page');
+        const subNavItems = document.querySelectorAll('.sub-nav-item');
 
-        document.querySelectorAll('.project-images img').forEach(img => {
-            img.addEventListener('click', function() {
-                modal.style.display = 'block';
-                modalImg.src = this.src;
+        navItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const pageId = this.getAttribute('data-page');
+                const subNav = this.querySelector('.sub-nav');
+
+                // 切换主页面
+                pages.forEach(page => page.classList.remove('active'));
+                document.getElementById(pageId).classList.add('active');
+
+                // 切换导航激活状态
+                navItems.forEach(nav => nav.classList.remove('active'));
+                this.classList.add('active');
+
+                // 显示/隐藏子导航
+                subNavItems.forEach(sub => sub.classList.remove('active'));
+                if (subNav) {
+                    subNav.style.display = subNav.style.display === 'block' ? 'none' : 'block';
+                }
             });
         });
 
-        closeBtn.addEventListener('click', function() {
-            modal.style.display = 'none';
+        // 子页面切换功能
+        subNavItems.forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const subPage = this.getAttribute('data-subpage');
+
+                subNavItems.forEach(sub => sub.classList.remove('active'));
+                this.classList.add('active');
+
+                loadProject(subPage);
+            });
         });
 
-        modal.addEventListener('click', function(e) {
-            if (e.target === modal) {
-                modal.style.display = 'none';
+        // 加载项目内容
+        function loadProject(projectId) {
+            const projectContent = document.getElementById('project-content');
+            const projects = {
+                '3dprinting': {
+                    title: '3D打印项目',
+                    description: '使用3D打印技术制作多种实用物品和模型，包括收纳柜、手机支架和高达模型等。',
+                    images: [
+                        'media/3D打印可拓展收纳柜.jpg',
+                        'media/3D打印手机支架.jpg',
+                        'media/3D打印高达.jpg'
+                    ]
+                },
+                'mcu': {
+                    title: '单片机课程设计',
+                    description: '完成基于单片机的系统设计，包括PCB设计、电路搭建和功能实现。',
+                    images: [
+                        'media/单片机课设-PCB测试.jpg',
+                        'media/单片机课设-成品内部结构展示.jpg',
+                        'media/单片机课设-成品展示.jpg',
+                        'media/单片机课设-电路搭建.jpg'
+                    ],
+                    video: 'media/单片机课设-功能演示.mp4'
+                },
+                'engineering': {
+                    title: '全国大学生工程实践与创新能力大赛',
+                    description: '参与工创赛项目，设计并制作智能小车，实现视觉识别等功能。',
+                    images: [
+                        'media/工创赛-合照.jpg',
+                        'media/工创赛-小车电路结构.jpg',
+                        'media/工创赛-小车视觉识别.jpg',
+                        'media/工创赛-整车展示.jpg'
+                    ]
+                },
+                'mechanical': {
+                    title: '全国大学生机械设计创新能力大赛',
+                    description: '设计创新机械结构，实现蝴蝶机构的运动控制。',
+                    images: [
+                        'media/机创-蝴蝶结构展示.jpg'
+                    ],
+                    video: 'media/机创-蝴蝶运动展示.mp4'
+                },
+                'gripper': {
+                    title: '机械夹爪设计',
+                    description: '设计并制作精密机械夹爪，实现稳定抓取功能。',
+                    images: [
+                        'media/机械夹爪-传动展示.jpg',
+                        'media/机械夹爪-抓取展示.jpg'
+                    ],
+                    video: 'media/机械夹爪-夹取展示.mp4'
+                },
+                'equipment': {
+                    title: '智能装备设计大赛',
+                    description: '参与智能装备设计大赛，展示创新设计能力。',
+                    images: [
+                        'media/智能装备大赛-展品1.jpg',
+                        'media/智能装备大赛-展品2.jpg',
+                        'media/智能装备大赛-展品3.jpg',
+                        'media/智能装备大赛-展品4.jpg',
+                        'media/智能装备大赛-获奖奖牌.jpg'
+                    ]
+                },
+                'zhuque': {
+                    title: '朱雀3D打印机组装',
+                    description: '从零开始组装朱雀3D打印机，完成调试并成功打印。',
+                    images: [
+                        'media/朱雀-整机展示.jpg',
+                        'media/朱雀-零部件组装阶段一.jpg',
+                        'media/朱雀-零部件组装阶段二.jpg',
+                        'media/朱雀-零部件组装阶段三3.jpg',
+                        'media/朱雀-首层打印测试.jpg',
+                        'media/朱雀-打印层纹问题.jpg'
+                    ],
+                    video: 'media/朱雀-打印展示.mp4'
+                },
+                'robot': {
+                    title: '机器人及人工智能大赛',
+                    description: '参与机器人竞赛，展示机器人设计与编程能力。',
+                    images: [
+                        'media/机器人及人工智能大赛-合照.jpg',
+                        'media/机器人及人工智能大赛-搭建比赛场地.jpg'
+                    ]
+                },
+                'science': {
+                    title: '科普活动',
+                    description: '参与科普活动，传播科技知识，展示实践成果。',
+                    images: [
+                        'media/科普活动.jpg'
+                    ]
+                }
+            };
+
+            const project = projects[projectId];
+            if (project) {
+                let html = `
+                    <div class="info-card">
+                        <h3 class="section-title">${project.title}</h3>
+                        <p class="content-text">${project.description}</p>
+                        <div class="project-gallery" style="margin-top: 2rem;">
+                            ${project.images.map(img => `
+                                <div style="margin: 1rem 0;">
+                                    <img src="${img}" alt="${project.title}" 
+                                         style="width: 100%; max-width: 600px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                                </div>
+                            `).join('')}
+                        </div>
+                        ${project.video ? `
+                            <div class="video-container" style="margin-top: 2rem;">
+                                <video controls style="width: 100%; max-width: 800px; border-radius: 8px;">
+                                    <source src="${project.video}" type="video/mp4">
+                                    您的浏览器不支持视频播放。
+                                </video>
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+                projectContent.innerHTML = html;
             }
-        });
-
-        // 平滑滚动
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                const navHeight = document.querySelector('nav').offsetHeight;
-                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight;
-
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            });
-        });
+        }
     </script>
 </body>
 </html>
