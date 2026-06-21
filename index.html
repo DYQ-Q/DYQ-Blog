@@ -221,6 +221,123 @@
             margin-bottom: 0.5rem;
         }
 
+        /* 艺术感图片展示 */
+        .art-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .art-frame {
+            position: relative;
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .art-frame:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .art-frame::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 3px solid #3498db;
+            border-radius: 8px;
+            pointer-events: none;
+        }
+
+        .art-frame img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 4px;
+            display: block;
+            flex-grow: 1;
+        }
+
+        .art-caption {
+            margin-top: 0.8rem;
+            color: #555;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        /* 项目展示部分 */
+        .project-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .project-description {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        /* 横向图片展示 */
+        .horizontal-gallery {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            padding: 0.8rem 0;
+            margin-bottom: 1.2rem;
+        }
+
+        .horizontal-frame {
+            flex: 0 0 auto;
+            width: 220px;
+            position: relative;
+            background: white;
+            padding: 0.8rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .horizontal-frame:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .horizontal-frame img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 4px;
+            display: block;
+        }
+
+        /* 视频容器 */
+        .video-container {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            height: fit-content;
+        }
+
+        .video-container video {
+            width: 100%;
+            max-height: 400px;
+            border-radius: 8px;
+        }
+
         /* 响应式设计 */
         @media (max-width: 768px) {
             .sidebar {
@@ -235,6 +352,10 @@
             }
 
             .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .art-gallery {
                 grid-template-columns: 1fr;
             }
         }
@@ -355,11 +476,217 @@
 
         <!-- 竞赛科创经历页面 -->
         <div class="page" id="competitions">
-            <h2 class="section-title">竞赛科创经历</h2>
-            <div id="project-content"></div>
+            <!-- 3D打印项目 -->
+            <div id="3dprinting" class="project-section page active">
+                <h2 class="section-title">3D打印项目</h2>
+                <p class="project-description">使用3D打印技术制作多种实用物品和模型，包括收纳柜、手机支架和高达模型等。通过这些项目，我熟练掌握了3D建模软件的使用和3D打印机的操作技巧。</p>
+                <div class="horizontal-gallery">
+                    <div class="horizontal-frame">
+                        <img src="media/3D打印可拓展收纳柜.jpg" alt="3D打印可拓展收纳柜">
+                        <div class="art-caption">可拓展收纳柜</div>
+                    </div>
+                    <div class="horizontal-frame">
+                        <img src="media/3D打印手机支架.jpg" alt="3D打印手机支架">
+                        <div class="art-caption">手机支架</div>
+                    </div>
+                    <div class="horizontal-frame">
+                        <img src="media/3D打印高达.jpg" alt="3D打印高达">
+                        <div class="art-caption">高达模型</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 单片机课设 -->
+            <div id="mcu" class="project-section page">
+                <h2 class="section-title">单片机课程设计</h2>
+                <p class="project-description">完成基于单片机的系统设计，包括PCB设计、电路搭建和功能实现。该项目锻炼了我的硬件设计能力和嵌入式编程能力。</p>
+                <div class="horizontal-gallery">
+                    <div class="horizontal-frame">
+                        <img src="media/单片机课设-PCB测试.jpg" alt="PCB测试">
+                        <div class="art-caption">PCB测试</div>
+                    </div>
+                    <div class="horizontal-frame">
+                        <img src="media/单片机课设-成品内部结构展示.jpg" alt="成品内部结构">
+                        <div class="art-caption">成品内部结构</div>
+                    </div>
+                    <div class="horizontal-frame">
+                        <img src="media/单片机课设-成品展示.jpg" alt="成品展示">
+                        <div class="art-caption">成品展示</div>
+                    </div>
+                    <div class="horizontal-frame">
+                        <img src="media/单片机课设-电路搭建.jpg" alt="电路搭建">
+                        <div class="art-caption">电路搭建</div>
+                    </div>
+                </div>
+                <div class="video-container">
+                    <video controls>
+                        <source src="media/单片机课设-功能演示.mp4" type="video/mp4">
+                        您的浏览器不支持视频播放。
+                    </video>
+                </div>
+            </div>
+
+            <!-- 工创赛 -->
+            <div id="engineering" class="project-section page">
+                <h2 class="section-title">全国大学生工程实践与创新能力大赛</h2>
+                <p class="project-description">参与工创赛项目，设计并制作智能小车，实现视觉识别等功能。该项目涉及机械设计、电路设计、算法开发等多个领域。</p>
+                <div class="horizontal-gallery">
+                    <div class="horizontal-frame">
+                        <img src="media/工创赛-合照.jpg" alt="团队合照">
+                        <div class="art-caption">团队合照</div>
+                    </div>
+                    <div class="horizontal-frame">
+                        <img src="media/工创赛-小车电路结构.jpg" alt="小车电路结构">
+                        <div class="art-caption">小车电路结构</div>
+                    </div>
+                    <div class="horizontal-frame">
+                        <img src="media/工创赛-小车视觉识别.jpg" alt="视觉识别系统">
+                        <div class="art-caption">视觉识别系统</div>
+                    </div>
+                    <div class="horizontal-frame">
+                        <img src="media/工创赛-整车展示.jpg" alt="整车展示">
+                        <div class="art-caption">整车展示</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 机创赛 -->
+            <div id="mechanical" class="project-section page">
+                <h2 class="section-title">全国大学生机械设计创新能力大赛</h2>
+                <p class="project-description">设计创新机械结构，实现蝴蝶机构的运动控制。该项目展示了我在机械设计和机构分析方面的能力。</p>
+                <div class="art-gallery">
+                    <div class="art-frame">
+                        <img src="media/机创-蝴蝶结构展示.jpg" alt="蝴蝶结构展示">
+                        <div class="art-caption">蝴蝶结构展示</div>
+                    </div>
+                </div>
+                <div class="video-container">
+                    <video controls>
+                        <source src="media/机创-蝴蝶运动展示.mp4" type="video/mp4">
+                        您的浏览器不支持视频播放。
+                    </video>
+                </div>
+            </div>
+
+            <!-- 机械夹爪 -->
+            <div id="gripper" class="project-section page">
+                <h2 class="section-title">机械夹爪设计</h2>
+                <p class="project-description">设计并制作精密机械夹爪，实现稳定抓取功能。该项目涉及机械传动设计和精密加工。</p>
+                <div class="horizontal-gallery">
+                    <div class="horizontal-frame">
+                        <img src="media/机械夹爪-传动展示.jpg" alt="传动结构">
+                        <div class="art-caption">传动结构</div>
+                    </div>
+                    <div class="horizontal-frame">
+                        <img src="media/机械夹爪-抓取展示.jpg" alt="抓取演示">
+                        <div class="art-caption">抓取演示</div>
+                    </div>
+                </div>
+                <div class="video-container">
+                    <video controls>
+                        <source src="media/机械夹爪-夹取展示.mp4" type="video/mp4">
+                        您的浏览器不支持视频播放。
+                    </video>
+                </div>
+            </div>
+
+            <!-- 智能装备设计大赛 -->
+            <div id="equipment" class="project-section page">
+                <h2 class="section-title">智能装备设计大赛</h2>
+                <p class="project-description">参与智能装备设计大赛，展示创新设计能力。该项目涉及智能控制、传感器应用和系统集成。</p>
+                <div class="horizontal-gallery">
+                    <div class="horizontal-frame">
+                        <img src="media/智能装备大赛-展品1.jpg" alt="展品1">
+                        <div class="art-caption">展品1</div>
+                    </div>
+                    <div class="horizontal-frame">
+                        <img src="media/智能装备大赛-展品2.jpg" alt="展品2">
+                        <div class="art-caption">展品2</div>
+                    </div>
+                    <div class="horizontal-frame">
+                        <img src="media/智能装备大赛-展品3.jpg" alt="展品3">
+                        <div class="art-caption">展品3</div>
+                    </div>
+                    <div class="horizontal-frame">
+                        <img src="media/智能装备大赛-展品4.jpg" alt="展品4">
+                        <div class="art-caption">展品4</div>
+                    </div>
+                    <div class="horizontal-frame">
+                        <img src="media/智能装备大赛-获奖奖牌.jpg" alt="获奖奖牌">
+                        <div class="art-caption">获奖奖牌</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 朱雀3D打印机 -->
+            <div id="zhuque" class="project-section page">
+                <h2 class="section-title">朱雀3D打印机组装</h2>
+                <p class="project-description">从零开始组装朱雀3D打印机，完成调试并成功打印。该项目锻炼了我的动手能力和问题解决能力。</p>
+                <div class="horizontal-gallery">
+                    <div class="horizontal-frame">
+                        <img src="media/朱雀-整机展示.jpg" alt="整机展示">
+                        <div class="art-caption">整机展示</div>
+                    </div>
+                    <div class="horizontal-frame">
+                        <img src="media/朱雀-零部件组装阶段一.jpg" alt="组装阶段一">
+                        <div class="art-caption">组装阶段一</div>
+                    </div>
+                    <div class="horizontal-frame">
+                        <img src="media/朱雀-零部件组装阶段二.jpg" alt="组装阶段二">
+                        <div class="art-caption">组装阶段二</div>
+                    </div>
+                    <div class="horizontal-frame">
+                        <img src="media/朱雀-零部件组装阶段三3.jpg" alt="组装阶段三">
+                        <div class="art-caption">组装阶段三</div>
+                    </div>
+                    <div class="horizontal-frame">
+                        <img src="media/朱雀-首层打印测试.jpg" alt="首层打印测试">
+                        <div class="art-caption">首层打印测试</div>
+                    </div>
+                    <div class="horizontal-frame">
+                        <img src="media/朱雀-打印层纹问题.jpg" alt="打印层纹问题">
+                        <div class="art-caption">打印层纹问题</div>
+                    </div>
+                </div>
+                <div class="video-container">
+                    <video controls>
+                        <source src="media/朱雀-打印展示.mp4" type="video/mp4">
+                        您的浏览器不支持视频播放。
+                    </video>
+                </div>
+            </div>
+
+            <!-- 机器人及人工智能大赛 -->
+            <div id="robot" class="project-section page">
+                <h2 class="section-title">机器人及人工智能大赛</h2>
+                <p class="project-description">参与机器人竞赛，展示机器人设计与编程能力。该项目涉及机器人控制、路径规划和任务执行。</p>
+                <div class="horizontal-gallery">
+                    <div class="horizontal-frame">
+                        <img src="media/机器人及人工智能大赛-合照.jpg" alt="团队合照">
+                        <div class="art-caption">团队合照</div>
+                    </div>
+                    <div class="horizontal-frame">
+                        <img src="media/机器人及人工智能大赛-搭建比赛场地.jpg" alt="搭建比赛场地">
+                        <div class="art-caption">搭建比赛场地</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 科普活动 -->
+            <div id="science" class="project-section page">
+                <h2 class="section-title">科普活动</h2>
+                <p class="project-description">参与科普活动，传播科技知识，展示实践成果。通过科普活动，我学会了如何将复杂的科技知识以通俗易懂的方式传达给大众。</p>
+                <div class="art-gallery">
+                    <div class="art-frame">
+                        <img src="media/科普活动.jpg" alt="科普活动">
+                        <div class="art-caption">科普活动现场</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
+    <script src="loadProject.js"></script>
     <script>
         // 页面切换功能
         const navItems = document.querySelectorAll('.nav-item');
@@ -393,132 +720,15 @@
                 e.stopPropagation();
                 const subPage = this.getAttribute('data-subpage');
 
+                // 移除所有active类
                 subNavItems.forEach(sub => sub.classList.remove('active'));
-                this.classList.add('active');
+                document.querySelectorAll('.project-section').forEach(p => p.classList.remove('active'));
 
-                loadProject(subPage);
+                // 添加active类到当前项
+                this.classList.add('active');
+                document.getElementById(subPage).classList.add('active');
             });
         });
-
-        // 加载项目内容
-        function loadProject(projectId) {
-            const projectContent = document.getElementById('project-content');
-            const projects = {
-                '3dprinting': {
-                    title: '3D打印项目',
-                    description: '使用3D打印技术制作多种实用物品和模型，包括收纳柜、手机支架和高达模型等。',
-                    images: [
-                        'media/3D打印可拓展收纳柜.jpg',
-                        'media/3D打印手机支架.jpg',
-                        'media/3D打印高达.jpg'
-                    ]
-                },
-                'mcu': {
-                    title: '单片机课程设计',
-                    description: '完成基于单片机的系统设计，包括PCB设计、电路搭建和功能实现。',
-                    images: [
-                        'media/单片机课设-PCB测试.jpg',
-                        'media/单片机课设-成品内部结构展示.jpg',
-                        'media/单片机课设-成品展示.jpg',
-                        'media/单片机课设-电路搭建.jpg'
-                    ],
-                    video: 'media/单片机课设-功能演示.mp4'
-                },
-                'engineering': {
-                    title: '全国大学生工程实践与创新能力大赛',
-                    description: '参与工创赛项目，设计并制作智能小车，实现视觉识别等功能。',
-                    images: [
-                        'media/工创赛-合照.jpg',
-                        'media/工创赛-小车电路结构.jpg',
-                        'media/工创赛-小车视觉识别.jpg',
-                        'media/工创赛-整车展示.jpg'
-                    ]
-                },
-                'mechanical': {
-                    title: '全国大学生机械设计创新能力大赛',
-                    description: '设计创新机械结构，实现蝴蝶机构的运动控制。',
-                    images: [
-                        'media/机创-蝴蝶结构展示.jpg'
-                    ],
-                    video: 'media/机创-蝴蝶运动展示.mp4'
-                },
-                'gripper': {
-                    title: '机械夹爪设计',
-                    description: '设计并制作精密机械夹爪，实现稳定抓取功能。',
-                    images: [
-                        'media/机械夹爪-传动展示.jpg',
-                        'media/机械夹爪-抓取展示.jpg'
-                    ],
-                    video: 'media/机械夹爪-夹取展示.mp4'
-                },
-                'equipment': {
-                    title: '智能装备设计大赛',
-                    description: '参与智能装备设计大赛，展示创新设计能力。',
-                    images: [
-                        'media/智能装备大赛-展品1.jpg',
-                        'media/智能装备大赛-展品2.jpg',
-                        'media/智能装备大赛-展品3.jpg',
-                        'media/智能装备大赛-展品4.jpg',
-                        'media/智能装备大赛-获奖奖牌.jpg'
-                    ]
-                },
-                'zhuque': {
-                    title: '朱雀3D打印机组装',
-                    description: '从零开始组装朱雀3D打印机，完成调试并成功打印。',
-                    images: [
-                        'media/朱雀-整机展示.jpg',
-                        'media/朱雀-零部件组装阶段一.jpg',
-                        'media/朱雀-零部件组装阶段二.jpg',
-                        'media/朱雀-零部件组装阶段三3.jpg',
-                        'media/朱雀-首层打印测试.jpg',
-                        'media/朱雀-打印层纹问题.jpg'
-                    ],
-                    video: 'media/朱雀-打印展示.mp4'
-                },
-                'robot': {
-                    title: '机器人及人工智能大赛',
-                    description: '参与机器人竞赛，展示机器人设计与编程能力。',
-                    images: [
-                        'media/机器人及人工智能大赛-合照.jpg',
-                        'media/机器人及人工智能大赛-搭建比赛场地.jpg'
-                    ]
-                },
-                'science': {
-                    title: '科普活动',
-                    description: '参与科普活动，传播科技知识，展示实践成果。',
-                    images: [
-                        'media/科普活动.jpg'
-                    ]
-                }
-            };
-
-            const project = projects[projectId];
-            if (project) {
-                let html = `
-                    <div class="info-card">
-                        <h3 class="section-title">${project.title}</h3>
-                        <p class="content-text">${project.description}</p>
-                        <div class="project-gallery" style="margin-top: 2rem;">
-                            ${project.images.map(img => `
-                                <div style="margin: 1rem 0;">
-                                    <img src="${img}" alt="${project.title}" 
-                                         style="width: 100%; max-width: 600px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-                                </div>
-                            `).join('')}
-                        </div>
-                        ${project.video ? `
-                            <div class="video-container" style="margin-top: 2rem;">
-                                <video controls style="width: 100%; max-width: 800px; border-radius: 8px;">
-                                    <source src="${project.video}" type="video/mp4">
-                                    您的浏览器不支持视频播放。
-                                </video>
-                            </div>
-                        ` : ''}
-                    </div>
-                `;
-                projectContent.innerHTML = html;
-            }
-        }
     </script>
 </body>
 </html>
