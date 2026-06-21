@@ -260,7 +260,7 @@
 
         .art-frame img {
             width: 100%;
-            height: 160px;
+            height: 350px;
             object-fit: cover;
             border-radius: 4px;
             display: block;
@@ -338,6 +338,46 @@
             border-radius: 8px;
         }
 
+        /* 简历容器 */
+        .resume-container {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+
+        .preview-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.8rem 1.5rem;
+            background: #27ae60;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .preview-btn:hover {
+            background: #1e8449;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.8rem 1.5rem;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .download-btn:hover {
+            background: #2980b9;
+        }
+
         /* 响应式设计 */
         @media (max-width: 768px) {
             .sidebar {
@@ -374,6 +414,9 @@
             <div class="nav-item active" data-page="profile">
                 <div class="nav-item-title">个人简介</div>
             </div>
+            <div class="nav-item" data-page="resume">
+                <div class="nav-item-title">个人简历</div>
+            </div>
             <div class="nav-item" data-page="competitions">
                 <div class="nav-item-title">竞赛科创经历</div>
                 <div class="sub-nav">
@@ -382,7 +425,7 @@
                     <div class="sub-nav-item" data-subpage="engineering">工创赛</div>
                     <div class="sub-nav-item" data-subpage="mechanical">机创赛</div>
                     <div class="sub-nav-item" data-subpage="gripper">机械夹爪</div>
-                    <div class="sub-nav-item" data-subpage="equipment">智能装备</div>
+                    <div class="sub-nav-item" data-subpage="equipment">智能装备大赛</div>
                     <div class="sub-nav-item" data-subpage="zhuque">朱雀3D打印机</div>
                     <div class="sub-nav-item" data-subpage="robot">机器人及人工智能大赛</div>
                     <div class="sub-nav-item" data-subpage="science">科普活动</div>
@@ -392,6 +435,26 @@
     </div>
 
     <div class="main-content">
+        <!-- 个人简历页面 -->
+        <div class="page" id="resume">
+            <div class="project-section">
+                <h2 class="section-title">个人简历</h2>
+                <div style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 1.5rem;">
+                    <a href="media/简历.pdf" target="_blank" class="preview-btn">
+                        <span style="margin-right: 0.5rem;">👁️</span>预览简历
+                    </a>
+                    <a href="media/简历.pdf" download="毛润博简历.pdf" class="download-btn">
+                        <span style="margin-right: 0.5rem;">📄</span>下载简历
+                    </a>
+                </div>
+                <div class="resume-container">
+                    <iframe src="media/简历.pdf" type="application/pdf" width="100%" height="1000px">
+                        <p>您的浏览器不支持PDF预览，请点击上方按钮下载简历查看。</p>
+                    </iframe>
+                </div>
+            </div>
+        </div>
+
         <!-- 个人简介页面 -->
         <div class="page active" id="profile">
             <div class="info-card">
@@ -476,53 +539,47 @@
 
         <!-- 竞赛科创经历页面 -->
         <div class="page" id="competitions">
-            <!-- 3D打印项目 -->
-            <div id="3dprinting" class="project-section page active">
-                <h2 class="section-title">3D打印项目</h2>
-                <p class="project-description">使用3D打印技术制作多种实用物品和模型，包括收纳柜、手机支架和高达模型等。通过这些项目，我熟练掌握了3D建模软件的使用和3D打印机的操作技巧。</p>
+            <!-- 智能装备设计大赛 -->
+            <div id="equipment" class="project-section page">
+                <h2 class="section-title">全国大学生智能装备创新设计大赛-国家级二等奖</h2>
+                <p class="project-description">参与智能装备设计大赛，展示创新设计能力。该项目涉及智能控制、传感器应用和系统集成。</p>
                 <div class="horizontal-gallery">
                     <div class="horizontal-frame">
-                        <img src="media/3D打印可拓展收纳柜.jpg" alt="3D打印可拓展收纳柜">
-                        <div class="art-caption">可拓展收纳柜</div>
+                        <img src="media/智能装备大赛-展品1.jpg" alt="展品1">
+                        <div class="art-caption">展品1</div>
                     </div>
                     <div class="horizontal-frame">
-                        <img src="media/3D打印手机支架.jpg" alt="3D打印手机支架">
-                        <div class="art-caption">手机支架</div>
+                        <img src="media/智能装备大赛-展品2.jpg" alt="展品2">
+                        <div class="art-caption">展品2</div>
                     </div>
                     <div class="horizontal-frame">
-                        <img src="media/3D打印高达.jpg" alt="3D打印高达">
-                        <div class="art-caption">高达模型</div>
+                        <img src="media/智能装备大赛-展品3.jpg" alt="展品3">
+                        <div class="art-caption">展品3</div>
+                    </div>
+                    <div class="horizontal-frame">
+                        <img src="media/智能装备大赛-展品4.jpg" alt="展品4">
+                        <div class="art-caption">展品4</div>
+                    </div>
+                    <div class="horizontal-frame">
+                        <img src="media/智能装备大赛-获奖奖牌.jpg" alt="获奖奖牌">
+                        <div class="art-caption">获奖奖牌</div>
                     </div>
                 </div>
             </div>
 
-            <!-- 单片机课设 -->
-            <div id="mcu" class="project-section page">
-                <h2 class="section-title">单片机课程设计</h2>
-                <p class="project-description">完成基于单片机的系统设计，包括PCB设计、电路搭建和功能实现。该项目锻炼了我的硬件设计能力和嵌入式编程能力。</p>
+            <!-- 机器人及人工智能大赛 -->
+            <div id="robot" class="project-section page">
+                <h2 class="section-title">全国大学生机器人及人工智能大赛-国家级二等奖</h2>
+                <p class="project-description">参与机器人竞赛，展示机器人设计与编程能力。该项目涉及机器人控制、路径规划和任务执行。</p>
                 <div class="horizontal-gallery">
                     <div class="horizontal-frame">
-                        <img src="media/单片机课设-PCB测试.jpg" alt="PCB测试">
-                        <div class="art-caption">PCB测试</div>
+                        <img src="media/机器人及人工智能大赛-合照.jpg" alt="团队合照">
+                        <div class="art-caption">团队合照</div>
                     </div>
                     <div class="horizontal-frame">
-                        <img src="media/单片机课设-成品内部结构展示.jpg" alt="成品内部结构">
-                        <div class="art-caption">成品内部结构</div>
+                        <img src="media/机器人及人工智能大赛-搭建比赛场地.jpg" alt="搭建比赛场地">
+                        <div class="art-caption">搭建比赛场地</div>
                     </div>
-                    <div class="horizontal-frame">
-                        <img src="media/单片机课设-成品展示.jpg" alt="成品展示">
-                        <div class="art-caption">成品展示</div>
-                    </div>
-                    <div class="horizontal-frame">
-                        <img src="media/单片机课设-电路搭建.jpg" alt="电路搭建">
-                        <div class="art-caption">电路搭建</div>
-                    </div>
-                </div>
-                <div class="video-container">
-                    <video controls>
-                        <source src="media/单片机课设-功能演示.mp4" type="video/mp4">
-                        您的浏览器不支持视频播放。
-                    </video>
                 </div>
             </div>
 
@@ -568,6 +625,37 @@
                 </div>
             </div>
 
+            <!-- 单片机课设 -->
+            <div id="mcu" class="project-section page">
+                <h2 class="section-title">单片机课程设计</h2>
+                <p class="project-description">完成基于单片机的系统设计，包括PCB设计、电路搭建和功能实现。该项目锻炼了我的硬件设计能力和嵌入式编程能力。</p>
+                <div class="horizontal-gallery">
+                    <div class="horizontal-frame">
+                        <img src="media/单片机课设-PCB测试.jpg" alt="PCB测试">
+                        <div class="art-caption">PCB测试</div>
+                    </div>
+                    <div class="horizontal-frame">
+                        <img src="media/单片机课设-成品内部结构展示.jpg" alt="成品内部结构">
+                        <div class="art-caption">成品内部结构</div>
+                    </div>
+                    <div class="horizontal-frame">
+                        <img src="media/单片机课设-成品展示.jpg" alt="成品展示">
+                        <div class="art-caption">成品展示</div>
+                    </div>
+                    <div class="horizontal-frame">
+                        <img src="media/单片机课设-电路搭建.jpg" alt="电路搭建">
+                        <div class="art-caption">电路搭建</div>
+                    </div>
+                </div>
+                <div class="video-container">
+                    <video controls>
+                        <source src="media/单片机课设-功能演示.mp4" type="video/mp4">
+                        您的浏览器不支持视频播放。
+                    </video>
+                </div>
+            </div>
+
+            
             <!-- 机械夹爪 -->
             <div id="gripper" class="project-section page">
                 <h2 class="section-title">机械夹爪设计</h2>
@@ -587,34 +675,6 @@
                         <source src="media/机械夹爪-夹取展示.mp4" type="video/mp4">
                         您的浏览器不支持视频播放。
                     </video>
-                </div>
-            </div>
-
-            <!-- 智能装备设计大赛 -->
-            <div id="equipment" class="project-section page">
-                <h2 class="section-title">智能装备设计大赛</h2>
-                <p class="project-description">参与智能装备设计大赛，展示创新设计能力。该项目涉及智能控制、传感器应用和系统集成。</p>
-                <div class="horizontal-gallery">
-                    <div class="horizontal-frame">
-                        <img src="media/智能装备大赛-展品1.jpg" alt="展品1">
-                        <div class="art-caption">展品1</div>
-                    </div>
-                    <div class="horizontal-frame">
-                        <img src="media/智能装备大赛-展品2.jpg" alt="展品2">
-                        <div class="art-caption">展品2</div>
-                    </div>
-                    <div class="horizontal-frame">
-                        <img src="media/智能装备大赛-展品3.jpg" alt="展品3">
-                        <div class="art-caption">展品3</div>
-                    </div>
-                    <div class="horizontal-frame">
-                        <img src="media/智能装备大赛-展品4.jpg" alt="展品4">
-                        <div class="art-caption">展品4</div>
-                    </div>
-                    <div class="horizontal-frame">
-                        <img src="media/智能装备大赛-获奖奖牌.jpg" alt="获奖奖牌">
-                        <div class="art-caption">获奖奖牌</div>
-                    </div>
                 </div>
             </div>
 
@@ -656,18 +716,22 @@
                 </div>
             </div>
 
-            <!-- 机器人及人工智能大赛 -->
-            <div id="robot" class="project-section page">
-                <h2 class="section-title">机器人及人工智能大赛</h2>
-                <p class="project-description">参与机器人竞赛，展示机器人设计与编程能力。该项目涉及机器人控制、路径规划和任务执行。</p>
+            <!-- 3D打印项目 -->
+            <div id="3dprinting" class="project-section page active">
+                <h2 class="section-title">3D打印项目</h2>
+                <p class="project-description">使用3D打印技术制作多种实用物品和模型，包括收纳柜、手机支架和高达模型等。通过这些项目，我熟练掌握了3D建模软件的使用和3D打印机的操作技巧。</p>
                 <div class="horizontal-gallery">
                     <div class="horizontal-frame">
-                        <img src="media/机器人及人工智能大赛-合照.jpg" alt="团队合照">
-                        <div class="art-caption">团队合照</div>
+                        <img src="media/3D打印可拓展收纳柜.jpg" alt="3D打印可拓展收纳柜">
+                        <div class="art-caption">可拓展收纳柜</div>
                     </div>
                     <div class="horizontal-frame">
-                        <img src="media/机器人及人工智能大赛-搭建比赛场地.jpg" alt="搭建比赛场地">
-                        <div class="art-caption">搭建比赛场地</div>
+                        <img src="media/3D打印手机支架.jpg" alt="3D打印手机支架">
+                        <div class="art-caption">手机支架</div>
+                    </div>
+                    <div class="horizontal-frame">
+                        <img src="media/3D打印高达.jpg" alt="3D打印高达">
+                        <div class="art-caption">高达模型</div>
                     </div>
                 </div>
             </div>
@@ -708,8 +772,17 @@
 
                 // 显示/隐藏子导航
                 subNavItems.forEach(sub => sub.classList.remove('active'));
+                document.querySelectorAll('.project-section').forEach(p => p.classList.remove('active'));
                 if (subNav) {
                     subNav.style.display = subNav.style.display === 'block' ? 'none' : 'block';
+                    // 默认选中第一个子导航项
+                    if (subNav.style.display === 'block') {
+                        const firstSub = subNav.querySelector('.sub-nav-item');
+                        if (firstSub) {
+                            firstSub.classList.add('active');
+                            document.getElementById(firstSub.getAttribute('data-subpage')).classList.add('active');
+                        }
+                    }
                 }
             });
         });
