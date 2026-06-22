@@ -1123,9 +1123,21 @@
             item.addEventListener('click', function(e) {
                 e.stopPropagation();
                 const subPage = this.getAttribute('data-subpage');
+                
+                // 找到所属的主栏目
+                const parentNav = this.closest('.nav-item');
+                const mainPageId = parentNav.getAttribute('data-page');
 
                 // 停止所有视频播放并复位
                 stopAllVideos();
+
+                // 先切换到对应的主页面
+                pages.forEach(page => page.classList.remove('active'));
+                document.getElementById(mainPageId).classList.add('active');
+
+                // 展开对应的子导航
+                document.querySelectorAll('.sub-nav').forEach(sub => sub.style.display = 'none');
+                parentNav.querySelector('.sub-nav').style.display = 'block';
 
                 // 移除所有active类
                 subNavItems.forEach(sub => sub.classList.remove('active'));
