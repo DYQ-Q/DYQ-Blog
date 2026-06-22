@@ -352,6 +352,106 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
+        /* 证书网格布局 */
+        .certificate-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .certificate-item {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .certificate-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .cert-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .cert-name {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .cert-link {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            margin: 0 0.3rem;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 0.85rem;
+            transition: background 0.3s;
+        }
+
+        .cert-link:hover {
+            background: #2980b9;
+        }
+
+        /* 证书网格布局 */
+        .certificate-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .certificate-item {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .certificate-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .cert-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .cert-name {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .cert-link {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            margin: 0 0.3rem;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 0.85rem;
+            transition: background 0.3s;
+        }
+
+        .cert-link:hover {
+            background: #2980b9;
+        }
+
         /* 简历容器 */
         .resume-container {
             background: #f8f9fa;
@@ -488,6 +588,13 @@
             <div class="nav-item" data-page="resume">
                 <div class="nav-item-title">个人简历</div>
             </div>
+            <div class="nav-item" data-page="certificates">
+                <div class="nav-item-title">荣誉证书</div>
+                <div class="sub-nav">
+                    <div class="sub-nav-item active" data-subpage="competition-cert">竞赛证书</div>
+                    <div class="sub-nav-item" data-subpage="other-cert">其他证书</div>
+                </div>
+            </div>
             <div class="nav-item" data-page="competitions">
                 <div class="nav-item-title">竞赛科创经历</div>
                 <div class="sub-nav">
@@ -522,6 +629,131 @@
                     <iframe src="media/个人简历.pdf" type="application/pdf" width="100%" height="800px">
                         <p>您的浏览器不支持PDF预览，请点击上方按钮下载简历查看。</p>
                     </iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- 荣誉证书页面 -->
+        <div class="page" id="certificates">
+            <!-- 竞赛证书 -->
+            <div id="competition-cert" class="project-section active">
+                <h2 class="section-title">竞赛证书</h2>
+                <p class="project-description">展示在各类竞赛中获得的荣誉证书。</p>
+                <div class="certificate-grid">
+                    <div class="certificate-item">
+                        <div class="cert-icon">🏆</div>
+                        <div class="cert-name">CRAIC2025-国二</div>
+                        <a href="media/竞赛证书/CRAIC2025-国二.pdf" target="_blank" class="cert-link">预览</a>
+                        <a href="media/竞赛证书/CRAIC2025-国二.pdf" download class="cert-link">下载</a>
+                    </div>
+                    <div class="certificate-item">
+                        <div class="cert-icon">🥉</div>
+                        <div class="cert-name">RoboCup-国三</div>
+                        <a href="media/竞赛证书/RoboCup-国三.pdf" target="_blank" class="cert-link">预览</a>
+                        <a href="media/竞赛证书/RoboCup-国三.pdf" download class="cert-link">下载</a>
+                    </div>
+                    <div class="certificate-item">
+                        <div class="cert-icon">🥈</div>
+                        <div class="cert-name">亚太杯-二等奖</div>
+                        <a href="media/竞赛证书/亚太杯-二等奖.pdf" target="_blank" class="cert-link">预览</a>
+                        <a href="media/竞赛证书/亚太杯-二等奖.pdf" download class="cert-link">下载</a>
+                    </div>
+                    <div class="certificate-item">
+                        <div class="cert-icon">🥉</div>
+                        <div class="cert-name">天津市CAD-三等奖</div>
+                        <a href="media/竞赛证书/天津市CAD-三等奖.pdf" target="_blank" class="cert-link">预览</a>
+                        <a href="media/竞赛证书/天津市CAD-三等奖.pdf" download class="cert-link">下载</a>
+                    </div>
+                    <div class="certificate-item">
+                        <div class="cert-icon">🥇</div>
+                        <div class="cert-name">成图-省一</div>
+                        <a href="media/竞赛证书/成图-省一.pdf" target="_blank" class="cert-link">预览</a>
+                        <a href="media/竞赛证书/成图-省一.pdf" download class="cert-link">下载</a>
+                    </div>
+                    <div class="certificate-item">
+                        <div class="cert-icon">🥇</div>
+                        <div class="cert-name">数学建模-省一</div>
+                        <a href="media/竞赛证书/数学建模-省一.pdf" target="_blank" class="cert-link">预览</a>
+                        <a href="media/竞赛证书/数学建模-省一.pdf" download class="cert-link">下载</a>
+                    </div>
+                    <div class="certificate-item">
+                        <div class="cert-icon">🥈</div>
+                        <div class="cert-name">数学竞赛非数A-省二</div>
+                        <a href="media/竞赛证书/数学竞赛非数A-省二.pdf" target="_blank" class="cert-link">预览</a>
+                        <a href="media/竞赛证书/数学竞赛非数A-省二.pdf" download class="cert-link">下载</a>
+                    </div>
+                    <div class="certificate-item">
+                        <div class="cert-icon">🥈</div>
+                        <div class="cert-name">智能装备设计-国二</div>
+                        <a href="media/竞赛证书/智能装备设计-国二.pdf" target="_blank" class="cert-link">预览</a>
+                        <a href="media/竞赛证书/智能装备设计-国二.pdf" download class="cert-link">下载</a>
+                    </div>
+                    <div class="certificate-item">
+                        <div class="cert-icon">🥉</div>
+                        <div class="cert-name">机械工程创新创意-省三</div>
+                        <a href="media/竞赛证书/机械工程创新创意-省三.pdf" target="_blank" class="cert-link">预览</a>
+                        <a href="media/竞赛证书/机械工程创新创意-省三.pdf" download class="cert-link">下载</a>
+                    </div>
+                    <div class="certificate-item">
+                        <div class="cert-icon">📄</div>
+                        <div class="cert-name">膝关节外骨骼机器人校级大创</div>
+                        <a href="media/竞赛证书/膝关节外骨骼机器人校级大创项目.pdf" target="_blank" class="cert-link">预览</a>
+                        <a href="media/竞赛证书/膝关节外骨骼机器人校级大创项目.pdf" download class="cert-link">下载</a>
+                    </div>
+                    <div class="certificate-item">
+                        <div class="cert-icon">🥉</div>
+                        <div class="cert-name">节能减排-省三</div>
+                        <a href="media/竞赛证书/节能减排-省三.pdf" target="_blank" class="cert-link">预览</a>
+                        <a href="media/竞赛证书/节能减排-省三.pdf" download class="cert-link">下载</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 其他证书 -->
+            <div id="other-cert" class="project-section">
+                <h2 class="section-title">其他证书</h2>
+                <p class="project-description">展示各类技能证书、奖学金证书等。</p>
+                <div class="certificate-grid">
+                    <div class="certificate-item">
+                        <div class="cert-icon">🎖️</div>
+                        <div class="cert-name">2024亚太机器人世界杯志愿者证书</div>
+                        <a href="media/其他证书/2024亚太机器人世界杯志愿者证书.pdf" target="_blank" class="cert-link">预览</a>
+                        <a href="media/其他证书/2024亚太机器人世界杯志愿者证书.pdf" download class="cert-link">下载</a>
+                    </div>
+                    <div class="certificate-item">
+                        <div class="cert-icon">📷</div>
+                        <div class="cert-name">CAD岗位证书</div>
+                        <a href="media/其他证书/CAD岗位证书.jpg" target="_blank" class="cert-link">预览</a>
+                    </div>
+                    <div class="certificate-item">
+                        <div class="cert-icon">📄</div>
+                        <div class="cert-name">CET6证书</div>
+                        <a href="media/其他证书/CET6证书.pdf" target="_blank" class="cert-link">预览</a>
+                        <a href="media/其他证书/CET6证书.pdf" download class="cert-link">下载</a>
+                    </div>
+                    <div class="certificate-item">
+                        <div class="cert-icon">📷</div>
+                        <div class="cert-name">Solidworks岗位证书</div>
+                        <a href="media/其他证书/Solidworks岗位证书.jpg" target="_blank" class="cert-link">预览</a>
+                    </div>
+                    <div class="certificate-item">
+                        <div class="cert-icon">🏅</div>
+                        <div class="cert-name">人民二等奖学金2023-2024</div>
+                        <a href="media/其他证书/人民二等奖学金2023-2024.pdf" target="_blank" class="cert-link">预览</a>
+                        <a href="media/其他证书/人民二等奖学金2023-2024.pdf" download class="cert-link">下载</a>
+                    </div>
+                    <div class="certificate-item">
+                        <div class="cert-icon">🏅</div>
+                        <div class="cert-name">人民二等奖学金2024-2025</div>
+                        <a href="media/其他证书/人民二等奖学金2024-2025.pdf" target="_blank" class="cert-link">预览</a>
+                        <a href="media/其他证书/人民二等奖学金2024-2025.pdf" download class="cert-link">下载</a>
+                    </div>
+                    <div class="certificate-item">
+                        <div class="cert-icon">💻</div>
+                        <div class="cert-name">计算机二级MsOffice</div>
+                        <a href="media/其他证书/计算机二级MsOffice.pdf" target="_blank" class="cert-link">预览</a>
+                        <a href="media/其他证书/计算机二级MsOffice.pdf" download class="cert-link">下载</a>
+                    </div>
                 </div>
             </div>
         </div>
